@@ -1,0 +1,10 @@
+[Unit]
+Description=Industrial-Pi Route Manager Service
+After=network.target
+
+[Service]
+ExecStart=sudo sh /home/eneltec/eth/routes.sh
+WorkingDirectory=/home/eneltec
+
+[Install]
+WantedBy=multi-user.target

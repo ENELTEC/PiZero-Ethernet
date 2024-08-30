@@ -1,0 +1,5 @@
+dtoverlay=spi1-2cs,cs0_pin=18,cs1_pin=17
+dtoverlay=enc28j60-spi1
+dtoverlay=dwc2,dr_mode=otg
+
+enable_uart=1
