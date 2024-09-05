@@ -20,8 +20,6 @@ sudo git clone https://github.com/ENELTEC/PiZero-Ethernet.git eth
 ```
 Simply run ``` sudo sh install.sh ``` or do the step by step.
 To move the files and restart the device:
-
-```
 # Installation Instructions
 
 ## Option 1: Run the `install.sh` script
