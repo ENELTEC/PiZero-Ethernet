@@ -27,7 +27,7 @@ For an automated installation, simply run the provided script:
 
 ```bash
 sudo sh install.sh
-
+```
 ## Option 2: Manual Installation
 If you prefer to execute the steps manually, follow these commands to move the files and restart the device:
 
