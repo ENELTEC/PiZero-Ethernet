@@ -33,7 +33,7 @@ If you prefer to execute the steps manually, follow these commands to move the f
 
 1. Make the `eth` file executable:
     ```bash
-    sudo chmod +x eth
+    sudo chmod +x eth/install.sh
     ```
 
 2. Append the contents of `config.txt` to `/boot/firmware/config.txt`:
