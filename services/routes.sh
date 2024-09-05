@@ -12,7 +12,7 @@ for iface in $iface_list; do
   if [ "$state" = "DOWN" ]; then
     echo "Interface $iface is DOWN. Flushing IP addresses."
     # Flush the IP addresses of the interface
-    sudo nmcli device down "$iface"
+    sudo ip addr flush dev $iface
   else
     echo "Interface $iface is already UP."
   fi
