@@ -9,20 +9,54 @@ This software enables the use of Eneltec dual-Ethernet Hat for use with Raspberr
 
 # How to install
 
+
+To update your device and clone the repository:
 ```
 sudo apt -y update
 sudo apt -y upgrade
 sudo apt install git -y
 sudo git clone https://github.com/ENELTEC/PiZero-Ethernet.git eth
-sudo chmod +x eth
-sudo cat eth/src/config.txt | sudo tee -a /boot/firmware/config.txt
-sudo cat eth/src/cmdline.txt | sudo tee -a /boot/firmware/cmdline.txt
-sudo dtc -I dts -O dtb -o /boot/firmware/overlays/enc28j60-spi1.dtbo eth/src/enc28j60-spi1.dts
-sudo cp eth/services/routes.service /etc/systemd/system/routes.service
-sudo systemctl enable routes.service
-sudo reboot
 
 ```
+Simply run ``` sudo sh install.sh ``` or do the step by step.
+To move the files and restart the device:
+# Installation Instructions
 
-After that, reboot the system and check the status of the ethernet connection. 
-You can check with commands ```route``` or ```ipconfig```.
+## Option 1: Run the `install.sh` script
+For an automated installation, simply run the provided script:
+
+```bash
+sudo sh install.sh
+```
+## Option 2: Manual Installation
+If you prefer to execute the steps manually, follow these commands to move the files and restart the device:
+
+1. Make the `eth` file executable:
+    ```bash
+    sudo chmod +x eth/install.sh
+    ```
+
+2. Append the contents of `config.txt` to `/boot/firmware/config.txt`:
+    ```bash
+    sudo cat eth/src/config.txt | sudo tee -a /boot/firmware/config.txt
+    ```
+
+3. Append the contents of `cmdline.txt` to `/boot/firmware/cmdline.txt`:
+    ```bash
+    sudo cat eth/src/cmdline.txt | sudo tee -a /boot/firmware/cmdline.txt
+    ```
+
+4. Compile and move the device tree overlay file:
+    ```bash
+    sudo dtc -I dts -O dtb -o /boot/firmware/overlays/enc28j60-spi1.dtbo eth/src/enc28j60-spi1.dts
+    ```
+
+5. Modify the route metric for the preconfigured connection:
+    ```bash
+    sudo nmcli connection modify preconfigured ipv4.route-metric 0
+    ```
+
+6. Reboot the device to apply changes:
+    ```bash
+    sudo reboot
+    ```
