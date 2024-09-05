@@ -1,7 +1,6 @@
 sudo apt -y update
 sudo apt -y upgrade
 sudo apt install git -y
-sudo git clone https://github.com/ENELTEC/PiZero-Ethernet.git eth
 sudo chmod +x eth
 sudo cat eth/src/config.txt | sudo tee -a /boot/firmware/config.txt
 sudo cat eth/src/cmdline.txt | sudo tee -a /boot/firmware/cmdline.txt
