@@ -26,37 +26,33 @@ To move the files and restart the device:
 For an automated installation, simply run the provided script:
 
 ```bash
-sudo sh install.sh
+sudo chmod +x eth/install.sh
+sudo sh eth/install.sh
 ```
 ## Option 2: Manual Installation
 If you prefer to execute the steps manually, follow these commands to move the files and restart the device:
 
-1. Make the `eth` file executable:
-    ```bash
-    sudo chmod +x eth/install.sh
-    ```
-
-2. Append the contents of `config.txt` to `/boot/firmware/config.txt`:
+1. Append the contents of `config.txt` to `/boot/firmware/config.txt`:
     ```bash
     sudo cat eth/src/config.txt | sudo tee -a /boot/firmware/config.txt
     ```
 
-3. Append the contents of `cmdline.txt` to `/boot/firmware/cmdline.txt`:
+2. Append the contents of `cmdline.txt` to `/boot/firmware/cmdline.txt`:
     ```bash
     sudo cat eth/src/cmdline.txt | sudo tee -a /boot/firmware/cmdline.txt
     ```
 
-4. Compile and move the device tree overlay file:
+3. Compile and move the device tree overlay file:
     ```bash
     sudo dtc -I dts -O dtb -o /boot/firmware/overlays/enc28j60-spi1.dtbo eth/src/enc28j60-spi1.dts
     ```
 
-5. Modify the route metric for the preconfigured connection:
+4. Modify the route metric for the preconfigured connection:
     ```bash
     sudo nmcli connection modify preconfigured ipv4.route-metric 0
     ```
 
-6. Reboot the device to apply changes:
+5. Reboot the device to apply changes:
     ```bash
     sudo reboot
     ```
