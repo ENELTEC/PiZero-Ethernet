@@ -5,7 +5,7 @@ Tested on: Raspberry Pi OS Lite 32-bit, July 4th 2024 | Kernel version: 6.6 | De
 
 This software enables the use of Eneltec dual-Ethernet Hat for use with Raspberry Pi Zero 2W. The hat contains two ENC28J60 modules and creates interfaces ```eth0``` and ```eth1```.
 
-***Check routes if having trouble with connection or vpn***
+***Check route metrics if having trouble with connection or VPN***
 
 # How to install
 
@@ -18,12 +18,12 @@ sudo apt install git -y
 sudo git clone https://github.com/ENELTEC/PiZero-Ethernet.git eth
 
 ```
-Simply run ``` sudo sh install.sh ``` or do the step by step.
-To move the files and restart the device:
+
 # Installation Instructions
 
 ## Option 1: Run the `install.sh` script
 For an automated installation, simply run the provided script:
+(Raspberry Pi OS Lite 32-bit, July 4th 2024 or newer ***only***)
 
 ```bash
 sudo chmod +x eth/install.sh
@@ -33,11 +33,13 @@ sudo sh eth/install.sh
 If you prefer to execute the steps manually, follow these commands to move the files and restart the device:
 
 1. Append the contents of `config.txt` to `/boot/firmware/config.txt`:
+    ATTENTION: If you are using an older version of Raspbian, the may will be at `/boot/config.txt`
     ```bash
     sudo cat eth/src/config.txt | sudo tee -a /boot/firmware/config.txt
     ```
 
 2. Append the contents of `cmdline.txt` to `/boot/firmware/cmdline.txt`:
+    ATTENTION: If you are using an older version of Raspbian, the file may be at `/boot/cmdline.txt`
     ```bash
     sudo cat eth/src/cmdline.txt | sudo tee -a /boot/firmware/cmdline.txt
     ```
