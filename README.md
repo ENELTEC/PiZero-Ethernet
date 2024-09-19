@@ -1,9 +1,12 @@
 # PiZero-Ethernet by Eneltec
 
+![Alt text](pics/PiZero_ethernet_img.png)
+
 Developed for use in Raspberry Pi Zero 2W
 Tested on: Raspberry Pi OS Lite 32-bit, July 4th 2024 | Kernel version: 6.6 | Debian version: 12 (bookworm) | Size: 500MB
 
 This software enables the use of Eneltec dual-Ethernet Hat for use with Raspberry Pi Zero 2W. The hat contains two ENC28J60 modules and creates interfaces ```eth0``` and ```eth1```.
+It connects with the Raspberry via SPI1 using cs0 and cs1.
 
 ***Check route metrics if having trouble with connection or VPN***
 
@@ -49,9 +52,9 @@ If you prefer to execute the steps manually, follow these commands to move the f
     sudo dtc -I dts -O dtb -o /boot/firmware/overlays/enc28j60-spi1.dtbo eth/src/enc28j60-spi1.dts
     ```
 
-4. Modify the route metric for the preconfigured connection:
+4. If you are using the NetWorkManager, with ```nmcli connection show``` discover the name of your connection modify its route metric:
     ```bash
-    sudo nmcli connection modify preconfigured ipv4.route-metric 0
+    sudo nmcli connection modify my_connection ipv4.route-metric 0
     ```
 
 5. Reboot the device to apply changes:
